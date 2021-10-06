@@ -45,40 +45,40 @@ public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ROLE_ID")
-	public long roleID;
+	public long roleId;
 	
-	@Column(name = "ROLE_NAME")
-	private String roleName;
+	@Column(name = "ROLE_TITLE")
+	private String roleTitle;
 
 	@Column(name = "ROLE_DESCRIPTION")
 	private String roleDescription;
 
 	/**
-	 * @return the roleID
+	 * @return the roleId
 	 */
-	public long getRoleID() {
-		return roleID;
+	public long getRoleId() {
+		return roleId;
 	}
 
 	/**
-	 * @param roleID the roleID to set
+	 * @param roleId the roleId to set
 	 */
-	public void setRoleID(long roleID) {
-		this.roleID = roleID;
+	public void setRoleId(long roleId) {
+		this.roleId = roleId;
 	}
 
 	/**
-	 * @return the roleName
+	 * @return the roleTitle
 	 */
-	public String getRoleName() {
-		return roleName;
+	public String getRoleTitle() {
+		return roleTitle;
 	}
 
 	/**
-	 * @param roleName the roleName to set
+	 * @param roleTitle the roleTitle to set
 	 */
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
+	public void setRoleTitle(String roleTitle) {
+		this.roleTitle = roleTitle;
 	}
 
 	/**

@@ -47,16 +47,10 @@ public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "EMPLOYEE_ID")
-	private long employeeID;
-
-	@Column(name = "LOGIN_ID")
-	private long loginID;
-
-	@Column(name = "OFFICE_ID")
-	private long officeID;
+	private long employeeId;
 
 	@Column(name = "ROLE_ID")
-	private long roleID;
+	private long roleId;
 
 	@Column(name = "FIRST_NAME")
 	private String firstName;
@@ -78,61 +72,42 @@ public class Employee {
 
 	@Column(name = "EMAIL")
 	private String email;
+	
+	@Column(name = "USERNAME")
+	private String username;
+
+	@Column(name = "PASSWORD")
+	private String password;
+
+	@Column(name = "CREATED_AT")
+	private Date createdAt;
 
 	/**
-	 * @return the employeeID
+	 * @return the employeeId
 	 */
-	public long getEmployeeID() {
-		return employeeID;
+	public long getEmployeeId() {
+		return employeeId;
 	}
 
 	/**
-	 * @param employeeID the employeeID to set
+	 * @param employeeId the employeeID to set
 	 */
-	public void setEmployeeID(long employeeID) {
-		this.employeeID = employeeID;
+	public void setEmployeeId(long employeeId) {
+		this.employeeId = employeeId;
 	}
 
 	/**
-	 * @return the loginID
+	 * @return the roleId
 	 */
-	public long getLoginID() {
-		return loginID;
+	public long getRoleId() {
+		return roleId;
 	}
 
 	/**
-	 * @param loginID the loginID to set
+	 * @param roleId the roleID to set
 	 */
-	public void setLoginID(long loginID) {
-		this.loginID = loginID;
-	}
-
-	/**
-	 * @return the officeID
-	 */
-	public long getOfficeID() {
-		return officeID;
-	}
-
-	/**
-	 * @param officeID the officeID to set
-	 */
-	public void setOfficeID(long officeID) {
-		this.officeID = officeID;
-	}
-
-	/**
-	 * @return the roleID
-	 */
-	public long getRoleID() {
-		return roleID;
-	}
-
-	/**
-	 * @param roleID the roleID to set
-	 */
-	public void setRoleID(long roleID) {
-		this.roleID = roleID;
+	public void setRoleId(long roleId) {
+		this.roleId = roleId;
 	}
 
 	/**
@@ -233,4 +208,46 @@ public class Employee {
 		this.email = email;
 	}
 
+	/**
+	 * @return the username
+	 */
+	public String getUsername() {
+		return username;
+	}
+
+	/**
+	 * @param username the username to set
+	 */
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	/**
+	 * @return the createdAt
+	 */
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	/**
+	 * @param createdAt the createdAt to set
+	 */
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+	
 }

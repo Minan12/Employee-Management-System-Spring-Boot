@@ -47,10 +47,10 @@ public class Payroll {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "PAYROLL_ID")
-	private long payrollID;
+	private long payrollId;
 
 	@Column(name = "EMPLOYEE_ID")
-	private long employeeID;
+	private long employeeId;
 
 	@Column(name = "PAYROLL_DATE")
 	private Date payrollDate;
@@ -68,31 +68,31 @@ public class Payroll {
 	private int netSalary;
 
 	/**
-	 * @return the payrollID
+	 * @return the payrollId
 	 */
-	public long getPayrollID() {
-		return payrollID;
+	public long getPayrollId() {
+		return payrollId;
 	}
 
 	/**
-	 * @param payrollID the payrollID to set
+	 * @param payrollId the payrollId to set
 	 */
-	public void setPayrollID(long payrollID) {
-		this.payrollID = payrollID;
+	public void setPayrollId(long payrollId) {
+		this.payrollId = payrollId;
 	}
 
 	/**
-	 * @return the employeeID
+	 * @return the employeeId
 	 */
-	public long getEmployeeID() {
-		return employeeID;
+	public long getEmployeeId() {
+		return employeeId;
 	}
 
 	/**
-	 * @param employeeID the employeeID to set
+	 * @param employeeId the employeeId to set
 	 */
-	public void setEmployeeID(long employeeID) {
-		this.employeeID = employeeID;
+	public void setEmployeeId(long employeeId) {
+		this.employeeId = employeeId;
 	}
 
 	/**
@@ -107,6 +107,20 @@ public class Payroll {
 	 */
 	public void setPayrollDate(Date payrollDate) {
 		this.payrollDate = payrollDate;
+	}
+
+	/**
+	 * @return the hourlyRate
+	 */
+	public long getHourlyRate() {
+		return hourlyRate;
+	}
+
+	/**
+	 * @param hourlyRate the hourlyRate to set
+	 */
+	public void setHourlyRate(long hourlyRate) {
+		this.hourlyRate = hourlyRate;
 	}
 
 	/**
@@ -150,5 +164,5 @@ public class Payroll {
 	public void setNetSalary(int netSalary) {
 		this.netSalary = netSalary;
 	}
-	
+
 }
