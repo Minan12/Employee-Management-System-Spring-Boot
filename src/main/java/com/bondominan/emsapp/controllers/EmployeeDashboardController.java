@@ -24,22 +24,17 @@ SOFTWARE.
 
 **/
 
-package com.bondominan.emsapp.controllers;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+/**
+ * 
+ */
+package com.bondominan.emsapp.controllers;
 
 /**
  * @author bondopangaji
  *
  */
 
-@Controller
-public class MainController {
-	
-    @GetMapping("/")
-    public String home(){
-        return "/index";
-    }  
-        
+public class EmployeeDashboardController {
+
 }
