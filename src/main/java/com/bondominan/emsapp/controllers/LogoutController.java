@@ -24,10 +24,6 @@ SOFTWARE.
 
 **/
 
-
-/**
- * 
- */
 package com.bondominan.emsapp.controllers;
 
 /**
