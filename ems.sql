@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 07, 2021 at 05:12 AM
+-- Generation Time: Oct 07, 2021 at 11:39 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -37,7 +37,6 @@ CREATE TABLE `employee` (
   `domicile_address` varchar(255) NOT NULL,
   `phone_number` varchar(24) NOT NULL,
   `email` varchar(48) NOT NULL,
-  `username` varchar(16) NOT NULL,
   `password` text NOT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -46,8 +45,8 @@ CREATE TABLE `employee` (
 -- Dumping data for table `employee`
 --
 
-INSERT INTO `employee` (`employee_id`, `role_id`, `first_name`, `last_name`, `birth_date`, `home_address`, `domicile_address`, `phone_number`, `email`, `username`, `password`, `created_at`) VALUES
-(1, 1, 'Dummy', 'User', '2021-10-06 18:43:06', 'Jalan', 'Jalan', '+62', 'dummy@mail.com', 'username', '5f4dcc3b5aa765d61d8327deb882cf99', '2021-10-06 18:43:06');
+INSERT INTO `employee` (`employee_id`, `role_id`, `first_name`, `last_name`, `birth_date`, `home_address`, `domicile_address`, `phone_number`, `email`, `password`, `created_at`) VALUES
+(1, 1, 'Dummy', 'User', '2021-10-06 18:43:06', 'Jalan', 'Jalan', '+62', 'dummy@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2021-10-06 18:43:06');
 
 -- --------------------------------------------------------
 
@@ -130,22 +129,6 @@ ALTER TABLE `payroll`
 --
 ALTER TABLE `role`
   MODIFY `role_id` int(36) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `employee`
---
-ALTER TABLE `employee`
-  ADD CONSTRAINT `FK_ROLE_ID` FOREIGN KEY (`ROLE_ID`) REFERENCES `role` (`ROLE_ID`);
-
---
--- Constraints for table `payroll`
---
-ALTER TABLE `payroll`
-  ADD CONSTRAINT `FK_EMPLOYEE_ID` FOREIGN KEY (`EMPLOYEE_ID`) REFERENCES `employee` (`EMPLOYEE_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
