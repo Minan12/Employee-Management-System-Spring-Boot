@@ -30,11 +30,32 @@ SOFTWARE.
  */
 package com.bondominan.emsapp.controllers;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
 /**
  * @author bondopangaji
  *
  */
 
+@Controller
 public class AdminDashboardController {
-
+	
+	@GetMapping
+	("/admin-dashboard/")
+	public String adminDashboardView() {
+		return "/admin-dashboard/dashboard";
+	}
+	
+	@GetMapping
+	("/admin-dashboard/employee-list")
+	public String adminDashboardEmployeeList() {
+		return "/admin-dashboard/employee-list";
+	}
+	
+	@GetMapping
+	("/admin-dashboard/add-employee")
+	public String adminDashboardAddEmployee() {
+		return "/admin-dashboard/add-employee";
+	}
 }

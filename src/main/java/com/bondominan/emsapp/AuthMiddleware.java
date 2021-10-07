@@ -69,7 +69,7 @@ public class AuthMiddleware implements Filter {
 
         HttpSession session = req.getSession(true);
 
-        Pattern pattern = Pattern.compile("(png|jpg|images|css|js|ico|woff2|woff|ttf)");
+        Pattern pattern = Pattern.compile("(png|jpg|images|svg|css|js|ico|woff2|woff|ttf)");
         Matcher matcher = pattern.matcher(req.getRequestURI());
         boolean matchFound = matcher.find();
 

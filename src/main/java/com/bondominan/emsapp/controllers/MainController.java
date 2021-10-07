@@ -46,4 +46,10 @@ public class MainController {
     public String homeView(){
     	return "/home";
     }
+    
+    @GetMapping("/base")
+    public String baseView(){
+    	return "/base/base";
+    }
+    
 }

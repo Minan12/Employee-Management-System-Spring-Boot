@@ -74,7 +74,10 @@ public class LoginController {
 		sessionAuthEmail.setAttribute("lastName", authEmail.getLastName());
 		sessionAuthEmail.setAttribute("roleId", authEmail.getRoleId());
 		sessionAuthEmail.setAttribute("loggedIn", true);
-
+		
+		if (authEmail.getRoleId() == 1) {
+			return "redirect:/admin-dashboard/";
+		}
 		return "redirect:/home";
 	}
 }
