@@ -26,13 +26,17 @@ SOFTWARE.
 
 package com.bondominan.emsapp.services;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.bondominan.emsapp.interfaces.EmployeeInterface;
 import com.bondominan.emsapp.models.Employee;
 import com.bondominan.emsapp.repositories.EmployeeRepository;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 /**
  *
@@ -40,44 +44,71 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class EmployeeService implements EmployeeInterface {    
+public class EmployeeService implements EmployeeInterface {
 
-    @Autowired
-    private EmployeeRepository employeeRepository;
+	@Autowired
+	private EmployeeRepository employeeRepository;
 
-    @Override
-    public Employee authEmail(String email, String password) throws Exception {
-        Employee employee = employeeRepository.findByEmail(email);
+	@Override
+	public Employee authEmail(String email, String password) throws Exception {
+		Employee employee = employeeRepository.findByEmail(email);
 
-        if (employee == null) {
-            return null;
-        }
+		if (employee == null) {
+			return null;
+		}
 
-        if (!this.match(employee.getPassword(), password)) {
-            return null;
-        }
+		if (!this.match(employee.getPassword(), password)) {
+			return null;
+		}
 
-        return employee;
-    }
-    
-    private String hash(String password) throws Exception {
-        MessageDigest md = MessageDigest.getInstance("MD5");
+		return employee;
+	}
 
-        byte[] messageDiggest = md.digest(password.getBytes());
+	private String hash(String password) throws Exception {
+		MessageDigest md = MessageDigest.getInstance("MD5");
 
-        BigInteger no = new BigInteger(1, messageDiggest);
+		byte[] messageDiggest = md.digest(password.getBytes());
 
-        String hashText = no.toString(16);
-        while (hashText.length() < 32) {
-            hashText = "0" + hashText;
-        }
+		BigInteger no = new BigInteger(1, messageDiggest);
 
-        return hashText;
-    }
-    
-    private boolean match(String password, String rawPassword) throws Exception {
-        rawPassword = this.hash(rawPassword);
-        return password.equals(rawPassword);
-    }    
-    
+		String hashText = no.toString(16);
+		while (hashText.length() < 32) {
+			hashText = "0" + hashText;
+		}
+
+		return hashText;
+	}
+
+	private boolean match(String password, String rawPassword) throws Exception {
+		rawPassword = this.hash(rawPassword);
+		return password.equals(rawPassword);
+	}
+
+	@Override
+	public List<Employee> getAll() {
+		return employeeRepository.findAll();
+	}
+
+	@Override
+	public void storeData(Employee employee) {
+		this.employeeRepository.save(employee);
+	}
+
+	@Override
+	public Employee getDataById(long id) {
+		Optional<Employee> optional = employeeRepository.findById(id);
+
+		if (!optional.isPresent()) {
+			throw new RuntimeException(" Todo not found for id :: " + id);
+		}
+
+		Employee employee = optional.get();
+		return employee;
+	}
+
+	@Override
+	public void deleteData(long id) {
+		this.employeeRepository.deleteById(id);
+	}
+
 }

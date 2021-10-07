@@ -30,8 +30,12 @@ SOFTWARE.
  */
 package com.bondominan.emsapp.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.bondominan.emsapp.interfaces.EmployeeInterface;
 
 /**
  * @author bondopangaji
@@ -41,6 +45,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AdminDashboardController {
 	
+	@Autowired
+	private EmployeeInterface employeeInterface;
+	
 	@GetMapping
 	("/admin-dashboard/")
 	public String adminDashboardView() {
@@ -49,7 +56,8 @@ public class AdminDashboardController {
 	
 	@GetMapping
 	("/admin-dashboard/employee-list")
-	public String adminDashboardEmployeeList() {
+	public String adminDashboardEmployeeList(Model model) {
+        model.addAttribute("list", employeeInterface.getAll());
 		return "/admin-dashboard/employee-list";
 	}
 	

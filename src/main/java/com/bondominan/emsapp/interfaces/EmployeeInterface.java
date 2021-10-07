@@ -26,6 +26,9 @@ SOFTWARE.
 
 package com.bondominan.emsapp.interfaces;
 
+
+import java.util.List;
+
 import com.bondominan.emsapp.models.Employee;
 
 /**
@@ -35,4 +38,8 @@ import com.bondominan.emsapp.models.Employee;
 
 public interface EmployeeInterface {
     Employee authEmail(String email, String password) throws Exception;
+    List<Employee> getAll();
+    void storeData(Employee employee);
+    Employee getDataById(long id);
+    void deleteData(long id);
 }
