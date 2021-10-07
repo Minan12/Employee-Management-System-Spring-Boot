@@ -82,21 +82,22 @@
 												<th>Email</th>
 												<th>Password</th>
 												<th>Created At</th>
+												<th>Action</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
+											<tr th:each="employee:${list}">
+												<td th:text="${employee.employeeId}"></td>
+												<td th:text="${employee.roleId}"></td>
+												<td th:text="${employee.firstName}"></td>
+												<td th:text="${employee.lastName}"></td>
+												<td th:text="${employee.birthDate}"></td>
+												<td th:text="${employee.homeAddress}"></td>
+												<td th:text="${employee.domicileAddress}"></td>
+												<td th:text="${employee.phoneNumber}"></td>
+												<td th:text="${employee.email}"></td>
+												<td th:text="${employee.password}"></td>
+												<td th:text="${employee.createdAt}"></td>
 												<td class="project-actions" style="display: flex;">
 												    <form style="padding-right: 0.25rem;">
                                                         <button  class="btn btn-info btn-sm">
