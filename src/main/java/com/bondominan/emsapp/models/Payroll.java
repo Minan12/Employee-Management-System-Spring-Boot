@@ -41,30 +41,30 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "PAYROLL")
+@Table(name = "payroll")
 public class Payroll {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "PAYROLL_ID")
+	@Column(name = "payroll_id")
 	private long payrollId;
 
-	@Column(name = "EMPLOYEE_ID")
+	@Column(name = "employee_id")
 	private long employeeId;
 
-	@Column(name = "PAYROLL_DATE")
+	@Column(name = "payroll_date")
 	private Date payrollDate;
 	
-	@Column(name = "HOURLY_RATE")
+	@Column(name = "hourly_rate")
 	private long hourlyRate;
 	
-	@Column(name = "ANNUAL_SALARY")
+	@Column(name = "annual_salary")
 	private long annualSalary;
 
-	@Column(name = "TAX")
+	@Column(name = "tax")
 	private int tax;
 	
-	@Column(name = "NET_SALARY")
+	@Column(name = "net_salary")
 	private int netSalary;
 
 	/**
@@ -164,5 +164,5 @@ public class Payroll {
 	public void setNetSalary(int netSalary) {
 		this.netSalary = netSalary;
 	}
-
+	
 }

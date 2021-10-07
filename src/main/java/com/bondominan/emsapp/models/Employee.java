@@ -41,45 +41,45 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "EMPLOYEE")
+@Table(name = "employee")
 public class Employee {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "EMPLOYEE_ID")
+	@Column(name = "employee_id")
 	private long employeeId;
 
-	@Column(name = "ROLE_ID")
+	@Column(name = "role_id")
 	private long roleId;
 
-	@Column(name = "FIRST_NAME")
+	@Column(name = "first_name")
 	private String firstName;
 
-	@Column(name = "LAST_NAME")
+	@Column(name = "last_name")
 	private String lastName;
 
-	@Column(name = "BIRTH_DATE")
+	@Column(name = "birth_date")
 	private Date birthDate;
 
-	@Column(name = "HOME_ADDRESS")
+	@Column(name = "home_address")
 	private String homeAddress;
 
-	@Column(name = "DOMICILE_ADDRESS")
+	@Column(name = "domicile_address")
 	private String domicileAddress;
 
-	@Column(name = "PHONE_NUMBER")
+	@Column(name = "phone_number")
 	private String phoneNumber;
 
-	@Column(name = "EMAIL")
+	@Column(name = "email")
 	private String email;
 	
-	@Column(name = "USERNAME")
+	@Column(name = "username")
 	private String username;
 
-	@Column(name = "PASSWORD")
+	@Column(name = "password")
 	private String password;
 
-	@Column(name = "CREATED_AT")
+	@Column(name = "created_at")
 	private Date createdAt;
 
 	/**
@@ -90,7 +90,7 @@ public class Employee {
 	}
 
 	/**
-	 * @param employeeId the employeeID to set
+	 * @param employeeId the employeeId to set
 	 */
 	public void setEmployeeId(long employeeId) {
 		this.employeeId = employeeId;
@@ -104,7 +104,7 @@ public class Employee {
 	}
 
 	/**
-	 * @param roleId the roleID to set
+	 * @param roleId the roleId to set
 	 */
 	public void setRoleId(long roleId) {
 		this.roleId = roleId;

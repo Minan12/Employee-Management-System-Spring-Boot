@@ -39,18 +39,18 @@ import javax.persistence.Table;
  */
 
 @Table
-@Entity(name = "ROLE")
+@Entity(name = "role")
 public class Role {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ROLE_ID")
+	@Column(name = "role_id")
 	public long roleId;
 	
-	@Column(name = "ROLE_TITLE")
+	@Column(name = "role_title")
 	private String roleTitle;
 
-	@Column(name = "ROLE_DESCRIPTION")
+	@Column(name = "role_description")
 	private String roleDescription;
 
 	/**
