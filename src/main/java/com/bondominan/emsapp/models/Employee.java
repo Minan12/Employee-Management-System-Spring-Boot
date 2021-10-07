@@ -73,9 +73,6 @@ public class Employee {
 	@Column(name = "email")
 	private String email;
 	
-	@Column(name = "username")
-	private String username;
-
 	@Column(name = "password")
 	private String password;
 
@@ -206,20 +203,6 @@ public class Employee {
 	 */
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	/**
-	 * @return the username
-	 */
-	public String getUsername() {
-		return username;
-	}
-
-	/**
-	 * @param username the username to set
-	 */
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	/**
