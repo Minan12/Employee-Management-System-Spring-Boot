@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 07, 2021 at 11:39 PM
+-- Generation Time: Oct 07, 2021 at 11:48 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -100,7 +100,7 @@ ALTER TABLE `employee`
 --
 ALTER TABLE `payroll`
   ADD PRIMARY KEY (`payroll_id`),
-  ADD KEY `EMPLOYEE_ID` (`employee_id`);
+  ADD KEY `FK_EMPLOYEE_ID` (`employee_id`) USING BTREE;
 
 --
 -- Indexes for table `role`
@@ -129,6 +129,22 @@ ALTER TABLE `payroll`
 --
 ALTER TABLE `role`
   MODIFY `role_id` int(36) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `employee`
+--
+ALTER TABLE `employee`
+  ADD CONSTRAINT `FK_ROLE_ID` FOREIGN KEY (`role_id`) REFERENCES `role` (`ROLE_ID`);
+
+--
+-- Constraints for table `payroll`
+--
+ALTER TABLE `payroll`
+  ADD CONSTRAINT `FK_EMPLOYEE_ID` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
