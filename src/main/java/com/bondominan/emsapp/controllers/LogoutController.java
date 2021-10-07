@@ -26,11 +26,31 @@ SOFTWARE.
 
 package com.bondominan.emsapp.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
 /**
  * @author bondopangaji
  *
  */
 
+@Controller
 public class LogoutController {
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+    	
+        HttpSession session = request.getSession(true);
 
+        session.removeAttribute("employeeId");
+        session.removeAttribute("firstName");
+        session.removeAttribute("lastName");
+        session.removeAttribute("roleId");
+        session.invalidate();
+        
+        return "redirect:/login";
+        
+    }
 }

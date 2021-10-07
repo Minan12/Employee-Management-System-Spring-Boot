@@ -38,8 +38,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 	
     @GetMapping("/")
-    public String home(){
-        return "/index";
-    }  
-        
+    public String mainView(){
+    	return "/home";
+    }
+    
+    @GetMapping("/home")
+    public String homeView(){
+    	return "/home";
+    }
 }

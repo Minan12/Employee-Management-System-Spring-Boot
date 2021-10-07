@@ -26,11 +26,55 @@ SOFTWARE.
 
 package com.bondominan.emsapp.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.bondominan.emsapp.interfaces.EmployeeInterface;
+import com.bondominan.emsapp.models.Employee;
+
 /**
  * @author bondopangaji
  *
  */
 
+@Controller
 public class LoginController {
 
+	@Autowired
+	private EmployeeInterface employeeInterface;
+
+	@GetMapping("/login")
+	public String loginView(Model model) {
+
+		Employee employee = new Employee();
+		model.addAttribute("employee", employee);
+
+		return "login";
+	}
+
+	@PostMapping("/login")
+	public String login(@ModelAttribute("employee") Employee employee, HttpServletRequest request) throws Exception {
+
+		HttpSession sessionAuthEmail = request.getSession(true);
+		Employee authEmail = employeeInterface.authEmail(employee.getEmail(), employee.getPassword());
+
+		if (authEmail == null) {
+			sessionAuthEmail.setAttribute("error", "Invalid Username or Password!");
+			return "redirect:/login";
+		}
+		sessionAuthEmail.setAttribute("employeeId", authEmail.getEmployeeId());
+		sessionAuthEmail.setAttribute("firstName", authEmail.getFirstName());
+		sessionAuthEmail.setAttribute("lastName", authEmail.getLastName());
+		sessionAuthEmail.setAttribute("roleId", authEmail.getRoleId());
+		sessionAuthEmail.setAttribute("loggedIn", true);
+
+		return "redirect:/home";
+	}
 }
