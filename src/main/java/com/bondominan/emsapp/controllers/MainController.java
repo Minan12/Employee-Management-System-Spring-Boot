@@ -39,17 +39,7 @@ public class MainController {
 	
     @GetMapping("/")
     public String mainView(){
-    	return "/home";
-    }
-    
-    @GetMapping("/home")
-    public String homeView(){
-    	return "/home";
-    }
-    
-    @GetMapping("/base")
-    public String baseView(){
-    	return "/base/base";
+    	return "";
     }
     
 }
