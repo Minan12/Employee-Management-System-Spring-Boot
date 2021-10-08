@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>AdminLTE 3 | Simple Tables</title>
+        <!-- Google Font: Source Sans Pro -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    </head>
+    <body class="hold-transition sidebar-mini">
+	<div class="wrapper">
+		<!-- Preloader -->
+		<div th:replace="/includes/base :: preloader"></div>
+
+		<!-- Navbar -->
+		<nav th:replace="/includes/base :: navbar"></nav>
+
+		<!-- Main Sidebar Container -->
+		<aside th:replace="/includes/base :: sidebar"></aside>
+		
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-6">
+							<h1>Employee Management</h1>
+						</div>
+						<div class="col-sm-6">
+							<ol class="breadcrumb float-sm-right">
+								<li class="breadcrumb-item">Home</a></li>
+								<li class="breadcrumb-item">Admin Dashboard</a></li>
+								<li class="breadcrumb-item active">Payroll List</li>
+							</ol>
+						</div>
+					</div>
+				</div><!-- /.container-fluid -->
+			</section>
+
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-header">
+									<h3 class="card-title">Payroll List</h3>
+									<div class="card-tools">
+										<div class="input-group input-group-sm" style="width: 150px;">
+											<input type="text" name="table_search" class="form-control float-right"
+												placeholder="Search">
+											<div class="input-group-append">
+												<button type="submit" class="btn btn-default">
+													<i class="fas fa-search"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- /.card-header -->
+								<div class="card-body table-responsive p-0" style="height: 300px;">
+									<table class="table table-head-fixed text-nowrap">
+										<thead>
+											<tr>
+												<th>Payroll ID</th>
+												<th>Employee ID</th>
+												<th>Payroll Date</th>
+												<th>Hourly Rate</th>
+												<th>Annual Salary</th>
+												<th>Tax</th>
+												<th>Net Salary</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="payroll:${list}">
+												<td th:text="${payroll.payroll_id}"></td>
+												<td th:text="${payroll.employee_id}"></td>
+												<td th:text="${payroll.payroll_date}"></td>
+												<td th:text="${payroll.hourly_rate}"></td>
+												<td th:text="${payroll.annual_salary}"></td>
+												<td th:text="${payroll.tax}"></td>
+												<td th:text="${payroll.net_salary}"></td>
+												<td class="project-actions" style="display: flex;">
+												    <form style="padding-right: 0.25rem;">
+                                                        <button  class="btn btn-info btn-sm">
+                                                            <i class="fas fa-pencil-alt"></i>
+                                                            Edit
+                                                        </button>
+                                                    </form>
+                                                    <form>
+                                                        <button class="btn btn-danger btn-sm">
+                                                            <i class="fas fa-trash"></i>
+                                                            Delete
+                                                        </button>
+                                                    </form>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+						</div>
+					</div>
+					<!-- /.row -->
+				</div><!-- /.container-fluid -->
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
+		<footer th:replace="/includes/base :: footer"></footer>
+	</div>
+        <!-- ./wrapper -->
+
+	<!-- jQuery -->
+	<script src="../../plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap 4 -->
+	<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="../../dist/js/adminlte.min.js"></script>
+	<!-- AdminLTE for demo purposes -->
+	<script src="../../dist/js/demo.js"></script>
+    </body>
+</html>
