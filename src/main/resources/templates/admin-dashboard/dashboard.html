@@ -25,19 +25,19 @@ THE SOFTWARE.
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="/includes/base :: head"> </head>
+<head th:replace="/includes/base-admin :: head"> </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
 	<div class="wrapper">
 
 		<!-- Preloader -->
-		<div th:replace="/includes/base :: preloader"></div>
+		<div th:replace="/includes/base-admin :: preloader"></div>
 
 		<!-- Navbar -->
-		<nav th:replace="/includes/base :: navbar"></nav>
+		<nav th:replace="/includes/base-admin :: navbar"></nav>
 
 		<!-- Main Sidebar Container -->
-		<aside th:replace="/includes/base :: sidebar"></aside>
+		<aside th:replace="/includes/base-admin :: sidebar"></aside>
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
@@ -794,13 +794,7 @@ THE SOFTWARE.
 			<!-- /.content -->
 		</div>
 		<!-- /.content-wrapper -->
-		<footer th:replace="/includes/base :: footer"></footer>
-
-		<!-- Control Sidebar -->
-		<aside class="control-sidebar control-sidebar-dark">
-			<!-- Control sidebar content goes here -->
-		</aside>
-		<!-- /.control-sidebar -->
+		<footer th:replace="/includes/base-admin :: footer"></footer>
 	</div>
 	<!-- ./wrapper -->
 

@@ -30,7 +30,9 @@ SOFTWARE.
  */
 package com.bondominan.emsapp.controllers;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,7 +41,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bondominan.emsapp.interfaces.EmployeeInterface;
+import com.bondominan.emsapp.interfaces.PayrollInterface;
 import com.bondominan.emsapp.models.Employee;
+import com.bondominan.emsapp.models.Payroll;
 
 /**
  * @author bondopangaji
@@ -47,16 +51,24 @@ import com.bondominan.emsapp.models.Employee;
  */
 
 @Controller
+@Component
 public class AdminDashboardController {
 	
 	@Autowired
 	private EmployeeInterface employeeInterface;
+	
+	@Autowired
+	private PayrollInterface payrollInterface;
 	
 	@GetMapping
 	("/admin-dashboard/")
 	public String adminDashboardView() {
 		return "/admin-dashboard/dashboard";
 	}
+	
+	/*
+	 * Employeee
+	 */
 	
 	@GetMapping
 	("/admin-dashboard/employee-list")
@@ -76,7 +88,7 @@ public class AdminDashboardController {
 
     @PostMapping
     ("/admin-dashboard/add-employe/saved")
-    public String storeCreate(@ModelAttribute("employee") Employee employee) throws Exception {
+    public String storeCreateEmployee(@ModelAttribute("employee") Employee employee) throws Exception {
     	employeeInterface.storeData(employee);
         return "redirect:/admin-dashboard/employee-list";
     }
@@ -92,15 +104,66 @@ public class AdminDashboardController {
 	
     @PostMapping
     ("/admin-dashboard/employee-list/edit-employee/edited")
-    public String storeEdit(@ModelAttribute("employee") Employee employee) throws Exception{       
+    public String storeEditEmployee(@ModelAttribute("employee") Employee employee) throws Exception{       
         employeeInterface.storeEditData(employee);
         return "redirect:/admin-dashboard/employee-list";
     }
 	
     @PostMapping
     ("/admin-dashboard/employee-list/{employeeId}/deleted")
-    public String delete(@PathVariable(value = "employeeId") long employeeId){
+    public String deleteEmployeeById(@PathVariable(value = "employeeId") long employeeId){
     	employeeInterface.deleteDataById(employeeId);
         return "redirect:/admin-dashboard/employee-list";
     }
+	
+	/*
+	 * Payroll
+	 */
+    
+	@GetMapping
+	("/admin-dashboard/payroll-list")
+	public String adminDashboardPayrollList(Model model) {
+        model.addAttribute("list", payrollInterface.getAll());
+		return "/admin-dashboard/payroll-list";
+	}
+	
+	@GetMapping
+	("/admin-dashboard/add-payroll")
+	public String adminDashboardAddPayroll(Model model) {
+		Payroll payroll = new Payroll();
+		model.addAttribute("payroll", payroll);
+
+		return "/admin-dashboard/add-payroll";
+	}
+
+    @PostMapping
+    ("/admin-dashboard/add-payroll/saved")
+    public String storeCreatePayroll(@ModelAttribute("payroll") Payroll payroll) throws Exception {
+    	payrollInterface.storeData(payroll);
+        return "redirect:/admin-dashboard/payroll-list";
+    }
+    
+	@GetMapping
+	("/admin-dashboard/edit-payroll/{payrollId}")
+	public String adminDashboardEditPayroll(@PathVariable(value = "payrollId") long payrollId, Model model) {
+		Payroll payroll = payrollInterface.getDataById(payrollId);
+
+        model.addAttribute("payroll", payroll);
+		return "/admin-dashboard/edit-payroll";
+	}
+
+    @PostMapping
+    ("/admin-dashboard/payroll-list/edit-payroll/edited")
+    public String storeEditPayroll(@ModelAttribute("payroll") Payroll payroll) throws Exception{       
+    	payrollInterface.storeEditData(payroll);
+        return "redirect:/admin-dashboard/payroll-list";
+    }
+    
+    @PostMapping
+    ("/admin-dashboard/payroll-list/{payrollId}/deleted")
+    public String deletePayrollById(@PathVariable(value = "payrollId") long payrollId){
+    	payrollInterface.deleteDataById(payrollId);
+        return "redirect:/admin-dashboard/payroll-list";
+    }
+	
 }

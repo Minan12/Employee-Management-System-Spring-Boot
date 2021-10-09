@@ -72,13 +72,13 @@ THE SOFTWARE.
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1>Add Employee</h1>
+							<h1>Edit Payroll</h1>
 						</div>
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item"><a href="#">Home</a></li>
 								<li class="breadcrumb-item">Admin Dashboard</li>
-								<li class="breadcrumb-item active">Add Employee</li>
+								<li class="breadcrumb-item active">Edit Payroll</li>
 							</ol>
 						</div>
 					</div>
@@ -93,37 +93,21 @@ THE SOFTWARE.
 							<div class="card-header">
 								<h3 class="card-title">General</h3>
 							</div>
-							<form method="POST" th:action="@{/admin-dashboard/add-employe/saved}"
-								th:object="${employee}" class="card-body row">
+							<form method="POST" th:action="@{/admin-dashboard/payroll-list/edit-payroll/edited}"
+								th:object="${payroll}" class="card-body row">
+								<input type="hidden" th:field="*{payrollId}" />
 								<div class="col-sm-12">
 									<div class="form-group">
-										<label for="roleId">Role ID</label>
-										<input th:field="*{roleId}" class="form-control"
-											placeholder="Input role id here" maxlength="1" required>
-										<p class="text-muted mt-2">* 1 - Admin<br> * 2 - Employee</p>
-									</div>
-								</div>
-								<div class="col-sm-6">
-									<div class="form-group">
-										<label for="firstName">First Name</label>
-										<input th:field="*{firstName}" type="text" id="firstName" class="form-control"
-											placeholder="Input first name here" maxlength="32" required>
-										<p class="text-muted mt-2">* Max. 32 Characters</p>
-									</div>
-								</div>
-								<div class="col-sm-6">
-									<div class="form-group">
-										<label for="lastName">Last Name</label>
-										<input th:field="*{lastName}" type="text" id="lastName" class="form-control"
-											placeholder="Input last name here" maxlength="32" required>
-										<p class="text-muted mt-2">* Max. 32 Characters</p>
+										<label for="employeeId">Employee ID</label>
+										<input th:field="*{employeeId}" class="form-control"
+											placeholder="Input employee id here" type="number" required>
 									</div>
 								</div>
 								<div class="col-sm-12">
 									<div class="form-group">
-										<label>Birth Date</label>
+										<label>Payroll Date</label>
 										<div class="input-group">
-											<input type="text" th:field="*{birthDate}" class="form-control"
+											<input th:field="*{payrollDate}" type="text" class="form-control"
 												data-inputmask-alias="datetime" data-inputmask-inputformat="dd-mm-yyyy"
 												data-mask>
 										</div>
@@ -131,46 +115,36 @@ THE SOFTWARE.
 								</div>
 								<div class="col-sm-6">
 									<div class="form-group">
-										<label for="inputDescription">Home Address</label>
-										<textarea th:field="*{homeAddress}" id="inputDescription" class="form-control"
-											rows="4" placeholder="Input home address here"></textarea>
-									</div>
-									<p class="text-muted mt-2">* Max. 255 Characters</p>
-								</div>
-								<div class="col-sm-6">
-									<div class="form-group">
-										<label for="inputDescription">Domicile Address</label>
-										<textarea th:field="*{domicileAddress}" id="inputDescription"
-											class="form-control" rows="4"
-											placeholder="Leave it empty if same as home address"></textarea>
-									</div>
-									<p class="text-muted mt-2">* Max. 255 Characters</p>
-								</div>
-								<div class="col-sm-6">
-									<div class="form-group">
-										<label for="inputPhoneNumber">Phone Number</label>
-										<input th:field="*{phoneNumber}" type="number" id="phoneNumber"
-											class="form-control" placeholder="Input phone number here">
+										<label for="hourlyRate">Hourly Rate</label>
+										<input th:field="*{hourlyRate}" class="form-control"
+											placeholder="input hourly rate here" type="number" required>
 									</div>
 								</div>
 								<div class="col-sm-6">
 									<div class="form-group">
-										<label for="exampleInputEmail">Email</label>
-										<input th:field="*{email}" type="email" id="exampleInputEmail"
-											class="form-control" placeholder="Input email here">
+										<label for="annualSalary">Annual Salary</label>
+										<input th:field="*{annualSalary}" class="form-control"
+											placeholder="input annual salary here" type="number" required>
 									</div>
 								</div>
-								<div class="col-sm-6">
+								<div class="col-sm-12">
 									<div class="form-group">
-										<label for="inputName">Password</label>
-										<input th:field="*{password}" type="password" id="inputName"
-											class="form-control" placeholder="Input password here">
+										<label for="tax">Tax</label>
+										<input th:field="*{tax}" class="form-control"
+											placeholder="input hourly rate here" type="number" required>
+									</div>
+								</div>
+								<div class="col-sm-12">
+									<div class="form-group">
+										<label for="netSalary">Net Salary</label>
+										<input th:field="*{netSalary}" class="form-control"
+											placeholder="input hourly rate here" type="number" required>
 									</div>
 								</div>
 								<div class="col-sm-12">
 									<div class="col-12">
 										<a href="#" class="btn btn-secondary">Cancel</a>
-										<input type="submit" value="Create New Employee"
+										<input type="submit" value="Save Changes"
 											class="btn btn-success float-right">
 									</div>
 								</div>

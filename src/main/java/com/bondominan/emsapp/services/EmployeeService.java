@@ -28,7 +28,6 @@ package com.bondominan.emsapp.services;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -102,7 +101,6 @@ public class EmployeeService implements EmployeeInterface {
 	
 	@Override
 	public void storeEditData(Employee employee) throws Exception {
-
   		this.employeeRepository.save(employee);
 	}
 

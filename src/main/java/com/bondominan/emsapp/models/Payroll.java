@@ -26,8 +26,6 @@ SOFTWARE.
 
 package com.bondominan.emsapp.models;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -53,7 +51,7 @@ public class Payroll {
 	private long employeeId;
 
 	@Column(name = "payroll_date")
-	private Date payrollDate;
+	private String payrollDate;
 	
 	@Column(name = "hourly_rate")
 	private long hourlyRate;
@@ -98,14 +96,14 @@ public class Payroll {
 	/**
 	 * @return the payrollDate
 	 */
-	public Date getPayrollDate() {
+	public String getPayrollDate() {
 		return payrollDate;
 	}
 
 	/**
 	 * @param payrollDate the payrollDate to set
 	 */
-	public void setPayrollDate(Date payrollDate) {
+	public void setPayrollDate(String payrollDate) {
 		this.payrollDate = payrollDate;
 	}
 
@@ -165,4 +163,5 @@ public class Payroll {
 		this.netSalary = netSalary;
 	}
 	
+
 }

@@ -17,16 +17,18 @@ and open the template in the editor.
 	<!-- Theme style -->
 	<link rel="stylesheet" href="../../dist/css/adminlte.min.css">
     </head>
+    
+    
     <body class="hold-transition sidebar-mini">
 	<div class="wrapper">
 		<!-- Preloader -->
-		<div th:replace="/includes/base :: preloader"></div>
+		<div th:replace="/includes/base-admin :: preloader"></div>
 
 		<!-- Navbar -->
-		<nav th:replace="/includes/base :: navbar"></nav>
+		<nav th:replace="/includes/base-admin :: navbar"></nav>
 
 		<!-- Main Sidebar Container -->
-		<aside th:replace="/includes/base :: sidebar"></aside>
+		<aside th:replace="/includes/base-admin :: sidebar"></aside>
 		
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
@@ -84,21 +86,25 @@ and open the template in the editor.
 										</thead>
 										<tbody>
 											<tr th:each="payroll:${list}">
-												<td th:text="${payroll.payroll_id}"></td>
-												<td th:text="${payroll.employee_id}"></td>
-												<td th:text="${payroll.payroll_date}"></td>
-												<td th:text="${payroll.hourly_rate}"></td>
-												<td th:text="${payroll.annual_salary}"></td>
+												<td th:text="${payroll.payrollId}"></td>
+												<td th:text="${payroll.employeeId}"></td>
+												<td th:text="${payroll.payrollDate}"></td>
+												<td th:text="${payroll.hourlyRate}"></td>
+												<td th:text="${payroll.annualSalary}"></td>
 												<td th:text="${payroll.tax}"></td>
-												<td th:text="${payroll.net_salary}"></td>
+												<td th:text="${payroll.netSalary}"></td>
 												<td class="project-actions" style="display: flex;">
-												    <form style="padding-right: 0.25rem;">
+												    <form
+												    	th:action="@{/admin-dashboard/edit-payroll/{id}(id=${payroll.payrollId})}" 
+												    	style="padding-right: 0.25rem;">
                                                         <button  class="btn btn-info btn-sm">
                                                             <i class="fas fa-pencil-alt"></i>
                                                             Edit
                                                         </button>
                                                     </form>
-                                                    <form>
+                                                    <form onSubmit="return confirm('Are you sure?')"
+														th:action="@{/admin-dashboard/payroll-list/{payrollId}/deleted(payrollId=${payroll.payrollId})}"
+														method="POST">
                                                         <button class="btn btn-danger btn-sm">
                                                             <i class="fas fa-trash"></i>
                                                             Delete
@@ -120,7 +126,7 @@ and open the template in the editor.
 			<!-- /.content -->
 		</div>
 		<!-- /.content-wrapper -->
-		<footer th:replace="/includes/base :: footer"></footer>
+		<footer th:replace="/includes/base-admin :: footer"></footer>
 	</div>
         <!-- ./wrapper -->
 
