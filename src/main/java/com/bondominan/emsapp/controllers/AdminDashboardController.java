@@ -61,7 +61,7 @@ public class AdminDashboardController {
 	private PayrollInterface payrollInterface;
 	
 	@GetMapping
-	("/admin-dashboard/")
+	("/admin-dashboard")
 	public String adminDashboardView() {
 		return "/admin-dashboard/dashboard";
 	}

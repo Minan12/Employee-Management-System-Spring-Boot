@@ -79,6 +79,6 @@ public class LoginController {
 		if (authEmail.getRoleId() == 1) {
 			return "redirect:/admin-dashboard/";
 		}
-		return "redirect:/home";
+		return "redirect:/employee-dashboard/";
 	}
 }
