@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 07, 2021 at 11:48 PM
+-- Generation Time: Oct 09, 2021 at 02:22 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -32,13 +32,13 @@ CREATE TABLE `employee` (
   `role_id` int(36) NOT NULL,
   `first_name` varchar(36) NOT NULL,
   `last_name` varchar(36) NOT NULL,
-  `birth_date` datetime NOT NULL,
+  `birth_date` varchar(255) NOT NULL,
   `home_address` varchar(255) NOT NULL,
-  `domicile_address` varchar(255) NOT NULL,
+  `domicile_address` varchar(255) DEFAULT NULL,
   `phone_number` varchar(24) NOT NULL,
   `email` varchar(48) NOT NULL,
   `password` text NOT NULL,
-  `created_at` datetime NOT NULL
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -46,43 +46,8 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`employee_id`, `role_id`, `first_name`, `last_name`, `birth_date`, `home_address`, `domicile_address`, `phone_number`, `email`, `password`, `created_at`) VALUES
-(1, 1, 'Dummy', 'User', '2021-10-06 18:43:06', 'Jalan', 'Jalan', '+62', 'dummy@mail.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2021-10-06 18:43:06');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `payroll`
---
-
-CREATE TABLE `payroll` (
-  `payroll_id` int(36) NOT NULL,
-  `employee_id` int(36) NOT NULL,
-  `payroll_date` datetime NOT NULL,
-  `hourly_rate` bigint(255) NOT NULL,
-  `annual_salary` bigint(255) NOT NULL,
-  `tax` int(255) NOT NULL,
-  `net_salary` bigint(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `role`
---
-
-CREATE TABLE `role` (
-  `role_id` int(36) NOT NULL,
-  `role_title` varchar(48) NOT NULL,
-  `role_description` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `role`
---
-
-INSERT INTO `role` (`role_id`, `role_title`, `role_description`) VALUES
-(1, 'Admin', 'Admin privilege'),
-(2, 'Employee', 'Employee privilege');
+(7, 1, 'John', 'Doe', '09-09-9999', 'Jalan', 'Jalan', '62', 'admin@bonan.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2021-10-09 06:51:13'),
+(8, 2, 'Dummy', 'Employe', '09-09-9999', '-', '-', '9999', 'dummy@mail.com', '5a22e6c339c96c9c0513a46e44c39683', '2021-10-09 07:14:47');
 
 --
 -- Indexes for dumped tables
@@ -96,19 +61,6 @@ ALTER TABLE `employee`
   ADD KEY `FK_ROLE_ID` (`role_id`) USING BTREE;
 
 --
--- Indexes for table `payroll`
---
-ALTER TABLE `payroll`
-  ADD PRIMARY KEY (`payroll_id`),
-  ADD KEY `FK_EMPLOYEE_ID` (`employee_id`) USING BTREE;
-
---
--- Indexes for table `role`
---
-ALTER TABLE `role`
-  ADD PRIMARY KEY (`role_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -116,19 +68,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `employee_id` int(36) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `payroll`
---
-ALTER TABLE `payroll`
-  MODIFY `payroll_id` int(36) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `role`
---
-ALTER TABLE `role`
-  MODIFY `role_id` int(36) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `employee_id` int(36) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -139,12 +79,6 @@ ALTER TABLE `role`
 --
 ALTER TABLE `employee`
   ADD CONSTRAINT `FK_ROLE_ID` FOREIGN KEY (`role_id`) REFERENCES `role` (`ROLE_ID`);
-
---
--- Constraints for table `payroll`
---
-ALTER TABLE `payroll`
-  ADD CONSTRAINT `FK_EMPLOYEE_ID` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
