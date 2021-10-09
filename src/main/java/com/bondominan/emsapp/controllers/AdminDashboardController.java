@@ -34,8 +34,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bondominan.emsapp.interfaces.EmployeeInterface;
+import com.bondominan.emsapp.models.Employee;
 
 /**
  * @author bondopangaji
@@ -63,7 +67,40 @@ public class AdminDashboardController {
 	
 	@GetMapping
 	("/admin-dashboard/add-employee")
-	public String adminDashboardAddEmployee() {
+	public String adminDashboardAddEmployee(Model model) {
+		Employee employee = new Employee();
+        model.addAttribute("employee", employee);
+        
 		return "/admin-dashboard/add-employee";
 	}
+
+    @PostMapping
+    ("/admin-dashboard/add-employe/saved")
+    public String storeCreate(@ModelAttribute("employee") Employee employee) throws Exception {
+    	employeeInterface.storeData(employee);
+        return "redirect:/admin-dashboard/employee-list";
+    }
+	
+	@GetMapping
+	("/admin-dashboard/edit-employee/{employeeId}")
+	public String adminDashboardEditEmployee(@PathVariable(value = "employeeId") long employeeId, Model model) {
+        Employee employee = employeeInterface.getDataById(employeeId);
+
+        model.addAttribute("employee", employee);
+		return "/admin-dashboard/edit-employee";
+	}
+	
+    @PostMapping
+    ("/admin-dashboard/employee-list/edit-employee/edited")
+    public String storeEdit(@ModelAttribute("employee") Employee employee) throws Exception{
+       	employeeInterface.storeData(employee);
+        return "redirect:/admin-dashboard/employee-list";
+    }
+	
+    @PostMapping
+    ("/admin-dashboard/employee-list/{employeeId}/deleted")
+    public String delete(@PathVariable(value = "employeeId") long employeeId){
+    	employeeInterface.deleteData(employeeId);
+        return "redirect:/admin-dashboard/employee-list";
+    }
 }

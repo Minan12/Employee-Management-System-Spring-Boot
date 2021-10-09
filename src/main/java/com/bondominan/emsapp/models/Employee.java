@@ -26,7 +26,7 @@ SOFTWARE.
 
 package com.bondominan.emsapp.models;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -57,9 +57,9 @@ public class Employee {
 
 	@Column(name = "last_name")
 	private String lastName;
-
+	
 	@Column(name = "birth_date")
-	private Date birthDate;
+	private String birthDate;
 
 	@Column(name = "home_address")
 	private String homeAddress;
@@ -72,7 +72,7 @@ public class Employee {
 
 	@Column(name = "email")
 	private String email;
-	
+
 	@Column(name = "password")
 	private String password;
 
@@ -138,14 +138,14 @@ public class Employee {
 	/**
 	 * @return the birthDate
 	 */
-	public Date getBirthDate() {
+	public String getBirthDate() {
 		return birthDate;
 	}
 
 	/**
 	 * @param birthDate the birthDate to set
 	 */
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 
@@ -232,5 +232,5 @@ public class Employee {
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
-	
+
 }

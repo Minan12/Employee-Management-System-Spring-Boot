@@ -28,6 +28,7 @@ package com.bondominan.emsapp.services;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -90,7 +91,17 @@ public class EmployeeService implements EmployeeInterface {
 	}
 
 	@Override
-	public void storeData(Employee employee) {
+	public void storeData(Employee employee) throws Exception {
+		
+        if (employee.getCreatedAt() == null) {
+            Date dateNow = java.util.Calendar.getInstance().getTime();
+            employee.setCreatedAt(dateNow);
+        }
+        
+        String hashed = this.hash(employee.getPassword());
+        employee.setPassword(hashed);
+
+        
 		this.employeeRepository.save(employee);
 	}
 
@@ -99,10 +110,13 @@ public class EmployeeService implements EmployeeInterface {
 		Optional<Employee> optional = employeeRepository.findById(id);
 
 		if (!optional.isPresent()) {
-			throw new RuntimeException(" Todo not found for id :: " + id);
+			throw new RuntimeException(" Employee not found for id :: " + id);
 		}
-
 		Employee employee = optional.get();
+		
+        String hashed = employee.getPassword();
+		employee.setPassword(hashed);
+		
 		return employee;
 	}
 

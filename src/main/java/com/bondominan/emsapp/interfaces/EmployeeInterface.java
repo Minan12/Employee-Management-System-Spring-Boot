@@ -39,7 +39,7 @@ import com.bondominan.emsapp.models.Employee;
 public interface EmployeeInterface {
     Employee authEmail(String email, String password) throws Exception;
     List<Employee> getAll();
-    void storeData(Employee employee);
+    void storeData(Employee employee) throws Exception;
     Employee getDataById(long id);
     void deleteData(long id);
 }

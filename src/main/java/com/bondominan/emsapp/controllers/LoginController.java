@@ -35,6 +35,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bondominan.emsapp.interfaces.EmployeeInterface;
 import com.bondominan.emsapp.models.Employee;
@@ -60,13 +61,13 @@ public class LoginController {
 	}
 
 	@PostMapping("/login")
-	public String login(@ModelAttribute("employee") Employee employee, HttpServletRequest request) throws Exception {
+	public String login(@ModelAttribute("employee") Employee employee, RedirectAttributes rA, HttpServletRequest request) throws Exception {
 
 		HttpSession sessionAuthEmail = request.getSession(true);
 		Employee authEmail = employeeInterface.authEmail(employee.getEmail(), employee.getPassword());
 
 		if (authEmail == null) {
-			sessionAuthEmail.setAttribute("error", "Invalid Username or Password!");
+			rA.addFlashAttribute("error", "Invalid Username or Password");
 			return "redirect:/login";
 		}
 		sessionAuthEmail.setAttribute("employeeId", authEmail.getEmployeeId());
