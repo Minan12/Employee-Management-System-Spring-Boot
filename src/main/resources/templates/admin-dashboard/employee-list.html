@@ -1,3 +1,27 @@
+<!--
+The MIT License
+
+Copyright 2021 bondopangaji
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +49,7 @@
 
 		<!-- Main Sidebar Container -->
 		<aside th:replace="/includes/base :: sidebar"></aside>
-		
+
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
@@ -81,7 +105,6 @@
 												<th>Phone Number</th>
 												<th>Email</th>
 												<th>Password</th>
-												<th>Created At</th>
 												<th>Actions</th>
 											</tr>
 										</thead>
@@ -97,23 +120,23 @@
 												<td th:text="${employee.phoneNumber}"></td>
 												<td th:text="${employee.email}"></td>
 												<td th:text="${employee.password}"></td>
-												<td th:text="${employee.createdAt}"></td>
 												<td class="project-actions text-right" style="display:inline-flex">
-												    <form th:action="@{/admin-dashboard/edit-employee/{id}(id=${employee.employeeId})}" 
-												    	style="padding-right: 0.25rem;">
-                                                        <button class="btn btn-info btn-sm">
-                                                            <i class="fas fa-pencil-alt"></i>
-                                                            Edit
-                                                        </button>
-                                                    </form>
-                                                    <form onSubmit="return confirm('Are you sure?')" 
-                                                    	th:action="@{/admin-dashboard/employee-list/{employeeId}/deleted(employeeId=${employee.employeeId})}" 
-                                                    	method="POST">
-                                                        <button class="btn btn-danger btn-sm">
-                                                            <i class="fas fa-trash"></i>
-                                                            Delete
-                                                        </button>
-                                                    </form>
+													<form
+														th:action="@{/admin-dashboard/edit-employee/{id}(id=${employee.employeeId})}"
+														style="padding-right: 0.25rem;">
+														<button class="btn btn-info btn-sm">
+															<i class="fas fa-pencil-alt"></i>
+															Edit
+														</button>
+													</form>
+													<form onSubmit="return confirm('Are you sure?')"
+														th:action="@{/admin-dashboard/employee-list/{employeeId}/deleted(employeeId=${employee.employeeId})}"
+														method="POST">
+														<button class="btn btn-danger btn-sm">
+															<i class="fas fa-trash"></i>
+															Delete
+														</button>
+													</form>
 												</td>
 											</tr>
 										</tbody>

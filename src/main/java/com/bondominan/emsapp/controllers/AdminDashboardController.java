@@ -70,7 +70,7 @@ public class AdminDashboardController {
 	public String adminDashboardAddEmployee(Model model) {
 		Employee employee = new Employee();
         model.addAttribute("employee", employee);
-        
+
 		return "/admin-dashboard/add-employee";
 	}
 
@@ -92,15 +92,15 @@ public class AdminDashboardController {
 	
     @PostMapping
     ("/admin-dashboard/employee-list/edit-employee/edited")
-    public String storeEdit(@ModelAttribute("employee") Employee employee) throws Exception{
-       	employeeInterface.storeData(employee);
+    public String storeEdit(@ModelAttribute("employee") Employee employee) throws Exception{       
+        employeeInterface.storeEditData(employee);
         return "redirect:/admin-dashboard/employee-list";
     }
 	
     @PostMapping
     ("/admin-dashboard/employee-list/{employeeId}/deleted")
     public String delete(@PathVariable(value = "employeeId") long employeeId){
-    	employeeInterface.deleteData(employeeId);
+    	employeeInterface.deleteDataById(employeeId);
         return "redirect:/admin-dashboard/employee-list";
     }
 }

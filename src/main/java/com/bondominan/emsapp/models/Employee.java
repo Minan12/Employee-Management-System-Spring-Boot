@@ -75,10 +75,7 @@ public class Employee {
 
 	@Column(name = "password")
 	private String password;
-
-	@Column(name = "created_at")
-	private Date createdAt;
-
+	
 	/**
 	 * @return the employeeId
 	 */
@@ -217,20 +214,6 @@ public class Employee {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	/**
-	 * @return the createdAt
-	 */
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	/**
-	 * @param createdAt the createdAt to set
-	 */
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
 	}
 
 }

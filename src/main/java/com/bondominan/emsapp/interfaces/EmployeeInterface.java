@@ -37,9 +37,12 @@ import com.bondominan.emsapp.models.Employee;
  */
 
 public interface EmployeeInterface {
-    Employee authEmail(String email, String password) throws Exception;
-    List<Employee> getAll();
-    void storeData(Employee employee) throws Exception;
-    Employee getDataById(long id);
-    void deleteData(long id);
+
+	Employee authEmail(String email, String password) throws Exception;
+	List<Employee> getAll();
+	void storeData(Employee employee) throws Exception;
+	void storeEditData(Employee employee) throws Exception;
+	Employee getDataById(long id);
+	void deleteDataById(long id);
+
 }

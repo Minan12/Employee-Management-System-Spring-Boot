@@ -92,17 +92,18 @@ public class EmployeeService implements EmployeeInterface {
 
 	@Override
 	public void storeData(Employee employee) throws Exception {
-		
-        if (employee.getCreatedAt() == null) {
-            Date dateNow = java.util.Calendar.getInstance().getTime();
-            employee.setCreatedAt(dateNow);
-        }
-        
+		        
         String hashed = this.hash(employee.getPassword());
         employee.setPassword(hashed);
 
         
 		this.employeeRepository.save(employee);
+	}
+	
+	@Override
+	public void storeEditData(Employee employee) throws Exception {
+
+  		this.employeeRepository.save(employee);
 	}
 
 	@Override
@@ -119,9 +120,9 @@ public class EmployeeService implements EmployeeInterface {
 		
 		return employee;
 	}
-
+	
 	@Override
-	public void deleteData(long id) {
+	public void deleteDataById(long id) {
 		this.employeeRepository.deleteById(id);
 	}
 
