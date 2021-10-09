@@ -41,5 +41,5 @@ public class MainController {
     public String mainView(){
     	return "index2";
     }
-    
+
 }
