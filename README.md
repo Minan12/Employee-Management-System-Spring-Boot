@@ -39,13 +39,13 @@ This project uses a number of open source projects to work properly:
 ![Preview0](https://github.com/bondopangaji/Employee-Management-System-Spring-Boot/blob/master/preview/preview0.png?raw=true)
 
 **Employee List**
-![Preview1](https://github.com/bondopangaji/Employee-Management-System-Spring-Boot/blob/master/preview/preview1.png?raw=true)
+![Preview1](https://github.com/bondopangaji/Employee-Management-System-Spring-Boot/blob/master/preview/preview1_rev.png?raw=true)
 
 **Payroll List**
-![Preview2](https://github.com/bondopangaji/Employee-Management-System-Spring-Boot/blob/master/preview/preview2.png?raw=true)
+![Preview2](https://github.com/bondopangaji/Employee-Management-System-Spring-Boot/blob/master/preview/preview2_rev.png?raw=true)
 
 **My Payroll**
-![Preview3](https://github.com/bondopangaji/Employee-Management-System-Spring-Boot/blob/master/preview/preview3.png?raw=true)
+![Preview3](https://github.com/bondopangaji/Employee-Management-System-Spring-Boot/blob/master/preview/preview3_rev.png?raw=true)
 
 **Payroll Invoice**
 ![Preview4](https://github.com/bondopangaji/Employee-Management-System-Spring-Boot/blob/master/preview/preview4.png?raw=true)
