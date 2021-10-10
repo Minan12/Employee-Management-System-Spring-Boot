@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 09, 2021 at 02:22 AM
+-- Generation Time: Oct 10, 2021 at 04:45 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -38,7 +38,7 @@ CREATE TABLE `employee` (
   `phone_number` varchar(24) NOT NULL,
   `email` varchar(48) NOT NULL,
   `password` text NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+  `created_at` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -46,8 +46,44 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`employee_id`, `role_id`, `first_name`, `last_name`, `birth_date`, `home_address`, `domicile_address`, `phone_number`, `email`, `password`, `created_at`) VALUES
-(7, 1, 'John', 'Doe', '09-09-9999', 'Jalan', 'Jalan', '62', 'admin@bonan.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2021-10-09 06:51:13'),
-(8, 2, 'Dummy', 'Employe', '09-09-9999', '-', '-', '9999', 'dummy@mail.com', '5a22e6c339c96c9c0513a46e44c39683', '2021-10-09 07:14:47');
+(1, 1, 'Admin', 'Admin', '09-09-9999', 'Address', 'Address', '62', 'dummyadm@bondo.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2021-10-09'),
+(9, 2, 'Employee', 'Dummy', '05-11-1999', 'Address', 'Address', '62', 'dummyemp@bondo.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2021-10-10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payroll`
+--
+
+CREATE TABLE `payroll` (
+  `payroll_id` int(36) NOT NULL,
+  `employee_id` int(36) NOT NULL,
+  `payroll_date` varchar(255) NOT NULL,
+  `hourly_rate` bigint(255) NOT NULL,
+  `annual_salary` bigint(255) NOT NULL,
+  `tax` int(255) NOT NULL,
+  `net_salary` bigint(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role`
+--
+
+CREATE TABLE `role` (
+  `role_id` int(36) NOT NULL,
+  `role_title` varchar(48) NOT NULL,
+  `role_description` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `role`
+--
+
+INSERT INTO `role` (`role_id`, `role_title`, `role_description`) VALUES
+(1, 'Admin', 'Admin privilege'),
+(2, 'Employee', 'Employee privilege');
 
 --
 -- Indexes for dumped tables
@@ -61,6 +97,19 @@ ALTER TABLE `employee`
   ADD KEY `FK_ROLE_ID` (`role_id`) USING BTREE;
 
 --
+-- Indexes for table `payroll`
+--
+ALTER TABLE `payroll`
+  ADD PRIMARY KEY (`payroll_id`),
+  ADD KEY `FK_EMPLOYEE_ID` (`employee_id`) USING BTREE;
+
+--
+-- Indexes for table `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`role_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -68,7 +117,19 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `employee_id` int(36) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `employee_id` int(36) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `payroll`
+--
+ALTER TABLE `payroll`
+  MODIFY `payroll_id` int(36) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `role`
+--
+ALTER TABLE `role`
+  MODIFY `role_id` int(36) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -79,6 +140,12 @@ ALTER TABLE `employee`
 --
 ALTER TABLE `employee`
   ADD CONSTRAINT `FK_ROLE_ID` FOREIGN KEY (`role_id`) REFERENCES `role` (`ROLE_ID`);
+
+--
+-- Constraints for table `payroll`
+--
+ALTER TABLE `payroll`
+  ADD CONSTRAINT `FK_EMPLOYEE_ID` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`employee_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
