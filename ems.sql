@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 10, 2021 at 04:45 PM
+-- Generation Time: Oct 11, 2021 at 12:49 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -47,7 +47,7 @@ CREATE TABLE `employee` (
 
 INSERT INTO `employee` (`employee_id`, `role_id`, `first_name`, `last_name`, `birth_date`, `home_address`, `domicile_address`, `phone_number`, `email`, `password`, `created_at`) VALUES
 (1, 1, 'Admin', 'Admin', '09-09-9999', 'Address', 'Address', '62', 'dummyadm@bondo.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2021-10-09'),
-(9, 2, 'Employee', 'Dummy', '05-11-1999', 'Address', 'Address', '62', 'dummyemp@bondo.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2021-10-10');
+(2, 2, 'Employee', 'Dummy', '05-11-1999', 'Address', 'Address', '62', 'dummyemp@bondo.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2021-10-10');
 
 -- --------------------------------------------------------
 
@@ -64,6 +64,13 @@ CREATE TABLE `payroll` (
   `tax` int(255) NOT NULL,
   `net_salary` bigint(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `payroll`
+--
+
+INSERT INTO `payroll` (`payroll_id`, `employee_id`, `payroll_date`, `hourly_rate`, `annual_salary`, `tax`, `net_salary`) VALUES
+(9, 2, '11-10-2021', 5, 60, 5, 57);
 
 -- --------------------------------------------------------
 
@@ -117,13 +124,13 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `employee_id` int(36) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `employee_id` int(36) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `payroll`
 --
 ALTER TABLE `payroll`
-  MODIFY `payroll_id` int(36) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `payroll_id` int(36) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `role`
