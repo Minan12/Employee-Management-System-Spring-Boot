@@ -39,7 +39,7 @@ public class MainController {
 	
     @GetMapping("/")
     public String mainView(){
-    	return "index2";
+    	return "index";
     }
 
 }

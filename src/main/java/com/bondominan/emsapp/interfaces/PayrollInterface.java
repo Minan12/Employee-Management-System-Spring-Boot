@@ -40,6 +40,7 @@ public interface PayrollInterface {
 	List<Payroll> getAll();
 	void storeData(Payroll payroll) throws Exception;
 	void storeEditData(Payroll payroll) throws Exception;
-	Payroll getDataById(long id);
+	Payroll getDataById(long employeeId);
 	void deleteDataById(long id);
+	Payroll getSinglePayroll(Long employeeId);
 }

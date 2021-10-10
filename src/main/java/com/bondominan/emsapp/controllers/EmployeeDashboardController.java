@@ -34,9 +34,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bondominan.emsapp.interfaces.PayrollInterface;
+import com.bondominan.emsapp.models.Employee;
 import com.bondominan.emsapp.models.Payroll;
 
 /**
@@ -63,20 +63,18 @@ public class EmployeeDashboardController {
 	}
 	
 	@GetMapping
-	("/admin-dashboard/edit-payroll/{payrollId}")
-	public String adminDashboardEditPayroll(@PathVariable(value = "payrollId") long payrollId, Model model) {
-		Payroll payroll = payrollInterface.getDataById(payrollId);
-
-        model.addAttribute("payroll", payroll);
-		return "/admin-dashboard/edit-payroll";
-	}
-	
-	@GetMapping
 	("/employee-dashboard/my-payroll")
-	public String myPayrollView() {
+	public String myPayrollView(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();  
+		String employeeIdTemp = String.valueOf(session.getAttribute("employeeId"));
+		long employeeId = Long.valueOf(employeeIdTemp);
+		System.out.println(employeeId);
+        Payroll payroll = payrollInterface.getDataById(employeeId);
+
 		return "/employee-dashboard/my-payroll";
 	}
 	
+
 	/**
 	 * 
 	 * nothing
@@ -86,11 +84,5 @@ public class EmployeeDashboardController {
 	("/employee-dashboard/invoice")
 	public String invoice() {
 		return "/employee-dashboard/invoice";
-	}
-	
-	@GetMapping
-	("/employee-dashboard/invoice-print")
-	public String ip() {
-		return "/employee-dashboard/invoice-print";
 	}
 }

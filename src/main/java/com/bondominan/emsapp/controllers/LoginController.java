@@ -69,13 +69,11 @@ public class LoginController {
 		if (authEmail == null) {
 			rA.addFlashAttribute("error", "Invalid Username or Password");
 			return "redirect:/login";
-		}
+		}	
 		sessionAuthEmail.setAttribute("employeeId", authEmail.getEmployeeId());
-		sessionAuthEmail.setAttribute("firstName", authEmail.getFirstName());
-		sessionAuthEmail.setAttribute("lastName", authEmail.getLastName());
-		sessionAuthEmail.setAttribute("roleId", authEmail.getRoleId());
 		sessionAuthEmail.setAttribute("loggedIn", true);
 		
+
 		if (authEmail.getRoleId() == 1) {
 			return "redirect:/admin-dashboard/";
 		}

@@ -30,9 +30,6 @@ package com.bondominan.emsapp.services;
 import java.util.List;
 import java.util.Optional;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -67,21 +64,28 @@ public class PayrollService implements PayrollInterface {
 	}
 
 	@Override
-	public Payroll getDataById(long id) {
-		Optional<Payroll> optional = payrollRepository.findById(id);
+	public Payroll getDataById(long employeeId) {
+		Optional<Payroll> optional = payrollRepository.findById(employeeId);
 		
 		if (!optional.isPresent()) {
-			throw new RuntimeException(" Payroll not found for id :: " + id);
+			throw new RuntimeException(" Payroll not found for id :: " + employeeId);
 		}
 		Payroll payroll = optional.get();
 		
 		return payroll;
 	}
 
+	
 	@Override
 	public void deleteDataById(long id) {
 		this.payrollRepository.deleteById(id);
 		
+	}
+
+	@Override
+	public Payroll getSinglePayroll(Long employeeId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

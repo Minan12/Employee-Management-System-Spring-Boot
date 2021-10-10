@@ -26,11 +26,16 @@ SOFTWARE.
 
 package com.bondominan.emsapp.models;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -74,6 +79,30 @@ public class Employee {
 	@Column(name = "password")
 	private String password;
 	
+	@OneToMany(fetch = FetchType.EAGER,mappedBy="employee",cascade = CascadeType.ALL)
+    private Set<Payroll> payroll;
+
+	public Employee() {
+		super();
+	}
+
+	public Employee(long employeeId, long roleId, String firstName, String lastName, String birthDate,
+			String homeAddress, String domicileAddress, String phoneNumber, String email, String password,
+			Set<Payroll> payroll) {
+		super();
+		this.employeeId = employeeId;
+		this.roleId = roleId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.birthDate = birthDate;
+		this.homeAddress = homeAddress;
+		this.domicileAddress = domicileAddress;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+		this.password = password;
+		this.payroll = payroll;
+	}
+
 	/**
 	 * @return the employeeId
 	 */
@@ -213,5 +242,21 @@ public class Employee {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	/**
+	 * @return the payroll
+	 */
+	public Set<Payroll> getPayroll() {
+		return payroll;
+	}
+
+	/**
+	 * @param payroll the payroll to set
+	 */
+	public void setPayroll(Set<Payroll> payroll) {
+		this.payroll = payroll;
+	}
+	
+	
 
 }
