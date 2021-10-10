@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="/includes/base-employee :: head"> </head>
+<head th:replace="/includes/base-employee :: head">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+   </head>
 
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -43,40 +50,30 @@
                 <div class="col-12">
                   <h4>
                     <i class="fas fa-globe"></i> BONAN, Inc.
-                    <small class="float-right">Date: 2/10/2014</small>
+                    <small th:text="*{payroll.payrollDate}" class="float-right"></small>
                   </h4>
                 </div>
                 <!-- /.col -->
               </div>
               <!-- info row -->
               <div class="row invoice-info">
-                <div class="col-sm-4 invoice-col">
+                <div class="col-sm-8 invoice-col">
                   From
                   <address>
                     <strong>BONAN, Inc.</strong><br>
-                    Jalanin aja, Nomor sekian<br>
-                    Kota dimana aja, Kode pos<br>
+                    Jalan Jend. Sudirman, Rt 01/01<br>
+                 	Menara Sudirman Kav. 01, 12830<br>
                     Phone: (62) 88-8888-8888<br>
                     Email: company@bonan.com
                   </address>
                 </div>
+          
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
-                  To
-                  <address>
-                    <strong>John Doe</strong><br>
-                    795 Folsom Ave, Suite 600<br>
-                    San Francisco, CA 94107<br>
-                    Phone: (555) 539-1037<br>
-                    Email: john.doe@example.com
-                  </address>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 invoice-col">
-                  <b>Invoice #007612</b><br>
+                  <b>Invoice:</b> <i th:text="*{payroll.payrollId}"></i><br>
                   <br>
-                  <b>Employee ID:</b> 4F3S8J<br>
-                  <b>Payment Date:</b> 2/22/2014<br>
+                  <b>Employee ID:</b> <i th:text="*{payroll.employeeId}"></i> <br>
+                  <b>Payment Date:</b> <i th:text="*{payroll.payrollDate}"></i><br>
                 </div>
                 <!-- /.col -->
               </div>
@@ -96,26 +93,26 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+                    <tr th:each="payroll:${payroll}">
                       <td>1</td>
                       <td>Annual Salary</td>
-                      <td>247-925-726</td>
-                      <td>Wes Anderson umami biodiesel</td>
-                      <td>$50.00</td>
+                      <td th:text="*{payroll.annualSalary}"> </td>
+                      <td th:text="*{payroll.payrollDate}"></td>
+                      <td th:text="*{payroll.annualSalary}"></td>
                     </tr>
                     <tr>
                       <td>2</td>
                       <td>Tax</td>
-                      <td>735-845-642</td>
-                      <td>Terry Richardson helvetica tousled street art master</td>
-                      <td>$10.70</td>
+                      <td th:text="*{payroll.tax}"></td>
+                      <td th:text="*{payroll.payrollDate}"></td>
+                      <td th:text="*{payroll.tax}"></td>
                     </tr>
                     <tr>
                       <td>3</td>
                       <td>Net Salary</td>
-                      <td>422-568-642</td>
-                      <td>Tousled lomo letterpress</td>
-                      <td>$25.99</td>
+                      <td th:text="*{payroll.netSalary}"></td>
+                      <td th:text="*{payroll.payrollDate}"></td>
+                      <td th:text="*{payroll.netSalary}"></td>
                     </tr>
                     </tbody>
                   </table>
@@ -133,13 +130,14 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-6">
-                  <p class="lead">Payment Date 2/22/2014</p>
+                  <p>Payroll Date:</p>
+                  <p th:text="*{payroll.payrollDate}" class="lead"></p>
 
                   <div class="table-responsive">
                     <table class="table">
                       <tr>
                         <th>Total:</th>
-                        <td>$265.24</td>
+                        <td th:text="*{payroll.netSalary}"></td>
                       </tr>
                     </table>
                   </div>

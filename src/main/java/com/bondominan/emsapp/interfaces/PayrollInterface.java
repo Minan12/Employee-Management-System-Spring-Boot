@@ -42,5 +42,4 @@ public interface PayrollInterface {
 	void storeEditData(Payroll payroll) throws Exception;
 	Payroll getDataById(long employeeId);
 	void deleteDataById(long id);
-	Payroll getSinglePayroll(Long employeeId);
 }

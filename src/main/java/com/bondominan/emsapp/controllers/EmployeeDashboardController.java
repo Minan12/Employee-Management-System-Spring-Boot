@@ -26,17 +26,14 @@ SOFTWARE.
 
 package com.bondominan.emsapp.controllers;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.bondominan.emsapp.interfaces.EmployeeInterface;
 import com.bondominan.emsapp.interfaces.PayrollInterface;
-import com.bondominan.emsapp.models.Employee;
 import com.bondominan.emsapp.models.Payroll;
 
 /**
@@ -49,31 +46,31 @@ public class EmployeeDashboardController {
 	
 	@Autowired
 	PayrollInterface payrollInterface;
-
+	
+	@Autowired
+	EmployeeInterface employeeInterface;
+	
 	@GetMapping
 	("/employee-dashboard")
-	public String adminDashboardView() {
+	public String adminDashboardView(Model model) {
 		return "/employee-dashboard/dashboard";
 	}
-	
-	@GetMapping
-	("/employee-dashboard/my-details")
-	public String myDetailsView() {
-		return "/employee-dashboard/my-detail";
-	}
-	
+		
 	@GetMapping
 	("/employee-dashboard/my-payroll")
-	public String myPayrollView(HttpServletRequest request, Model model) {
-		HttpSession session = request.getSession();  
-		String employeeIdTemp = String.valueOf(session.getAttribute("employeeId"));
-		long employeeId = Long.valueOf(employeeIdTemp);
-		System.out.println(employeeId);
-        Payroll payroll = payrollInterface.getDataById(employeeId);
-
+	public String payrollView(Model model) {
+		model.addAttribute("list", payrollInterface.getAll());
 		return "/employee-dashboard/my-payroll";
 	}
 	
+	@GetMapping
+	("/employee-dashboard/invoice/{payrollId}")
+	public String myPayrollView(@PathVariable(value = "payrollId") long payrollId, Model model) {
+	        Payroll payroll = payrollInterface.getDataById(payrollId);
+	        model.addAttribute("payroll", payroll);
+			return "/employee-dashboard/invoice";
+	}
+		
 
 	/**
 	 * 

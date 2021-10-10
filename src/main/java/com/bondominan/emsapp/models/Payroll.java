@@ -26,14 +26,11 @@ SOFTWARE.
 
 package com.bondominan.emsapp.models;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -50,9 +47,8 @@ public class Payroll {
 	@Column(name = "payroll_id")
 	private long payrollId;
 	
-	@ManyToOne(cascade= CascadeType.ALL)
-    @JoinColumn(name = "employee_id")
-	private Employee employee;
+    @Column(name = "employee_id")
+	private long employee;
 	
 	@Column(name = "payroll_date")
 	private String payrollDate;
@@ -69,41 +65,12 @@ public class Payroll {
 	@Column(name = "net_salary")
 	private int netSalary;
 
-
-	public Payroll() {
-		super();
-	}
-
-
-	/**
-	 * @param payrollId
-	 * @param employee
-	 * @param payrollDate
-	 * @param hourlyRate
-	 * @param annualSalary
-	 * @param tax
-	 * @param netSalary
-	 */
-	public Payroll(long payrollId, Employee employee, String payrollDate, long hourlyRate, long annualSalary, int tax,
-			int netSalary) {
-		super();
-		this.payrollId = payrollId;
-		this.employee = employee;
-		this.payrollDate = payrollDate;
-		this.hourlyRate = hourlyRate;
-		this.annualSalary = annualSalary;
-		this.tax = tax;
-		this.netSalary = netSalary;
-	}
-
-
 	/**
 	 * @return the payrollId
 	 */
 	public long getPayrollId() {
 		return payrollId;
 	}
-
 
 	/**
 	 * @param payrollId the payrollId to set
@@ -112,22 +79,19 @@ public class Payroll {
 		this.payrollId = payrollId;
 	}
 
-
 	/**
-	 * @return the employee
+	 * @return the employeeId
 	 */
-	public Employee getEmployee() {
+	public long getEmployeeId() {
 		return employee;
 	}
 
-
 	/**
-	 * @param employee the employee to set
+	 * @param employeeId the employeeId to set
 	 */
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	public void setEmployeeId(long employeeId) {
+		this.employee = employeeId;
 	}
-
 
 	/**
 	 * @return the payrollDate
@@ -136,14 +100,12 @@ public class Payroll {
 		return payrollDate;
 	}
 
-
 	/**
 	 * @param payrollDate the payrollDate to set
 	 */
 	public void setPayrollDate(String payrollDate) {
 		this.payrollDate = payrollDate;
 	}
-
 
 	/**
 	 * @return the hourlyRate
@@ -152,14 +114,12 @@ public class Payroll {
 		return hourlyRate;
 	}
 
-
 	/**
 	 * @param hourlyRate the hourlyRate to set
 	 */
 	public void setHourlyRate(long hourlyRate) {
 		this.hourlyRate = hourlyRate;
 	}
-
 
 	/**
 	 * @return the annualSalary
@@ -168,14 +128,12 @@ public class Payroll {
 		return annualSalary;
 	}
 
-
 	/**
 	 * @param annualSalary the annualSalary to set
 	 */
 	public void setAnnualSalary(long annualSalary) {
 		this.annualSalary = annualSalary;
 	}
-
 
 	/**
 	 * @return the tax
@@ -184,14 +142,12 @@ public class Payroll {
 		return tax;
 	}
 
-
 	/**
 	 * @param tax the tax to set
 	 */
 	public void setTax(int tax) {
 		this.tax = tax;
 	}
-
 
 	/**
 	 * @return the netSalary
@@ -200,14 +156,12 @@ public class Payroll {
 		return netSalary;
 	}
 
-
 	/**
 	 * @param netSalary the netSalary to set
 	 */
 	public void setNetSalary(int netSalary) {
 		this.netSalary = netSalary;
 	}
-
 	
 	
 }

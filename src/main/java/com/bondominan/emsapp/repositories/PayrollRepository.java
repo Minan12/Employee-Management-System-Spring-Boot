@@ -26,9 +26,12 @@ SOFTWARE.
 
 package com.bondominan.emsapp.repositories;
 
-import com.bondominan.emsapp.models.Payroll;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.bondominan.emsapp.models.Payroll;
 
 /**
  *
@@ -37,5 +40,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PayrollRepository extends JpaRepository<Payroll, Long> {
-
+	public List<Payroll> getPayrollByEmployee(long employee);
 }

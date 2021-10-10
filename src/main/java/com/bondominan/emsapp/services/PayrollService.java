@@ -81,11 +81,4 @@ public class PayrollService implements PayrollInterface {
 		this.payrollRepository.deleteById(id);
 		
 	}
-
-	@Override
-	public Payroll getSinglePayroll(Long employeeId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
