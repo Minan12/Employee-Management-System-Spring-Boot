@@ -29,6 +29,8 @@ package com.bondominan.emsapp.interfaces;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.bondominan.emsapp.models.Employee;
 
 /**
@@ -44,5 +46,4 @@ public interface EmployeeInterface {
 	void storeEditData(Employee employee) throws Exception;
 	Employee getDataById(long id);
 	void deleteDataById(long id);
-
 }

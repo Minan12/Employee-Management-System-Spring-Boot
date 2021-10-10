@@ -20,13 +20,13 @@ and open the template in the editor.
     <body class="hold-transition sidebar-mini">
 	<div class="wrapper">
 		<!-- Preloader -->
-		<div th:replace="/includes/base :: preloader"></div>
+		<div th:replace="/includes/base-employee :: preloader"></div>
 
 		<!-- Navbar -->
-		<nav th:replace="/includes/base :: navbar"></nav>
+		<nav th:replace="/includes/base-employee :: navbar"></nav>
 
 		<!-- Main Sidebar Container -->
-		<aside th:replace="/includes/base :: sidebar"></aside>
+		<aside th:replace="/includes/base-employee :: sidebar"></aside>
 		
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
@@ -35,13 +35,13 @@ and open the template in the editor.
 				<div class="container-fluid">
 					<div class="row mb-2">
 						<div class="col-sm-6">
-							<h1>Employee Management</h1>
+							<h1>My Payroll</h1>
 						</div>
 						<div class="col-sm-6">
 							<ol class="breadcrumb float-sm-right">
 								<li class="breadcrumb-item">Home</a></li>
 								<li class="breadcrumb-item">Employee Dashboard</a></li>
-								<li class="breadcrumb-item active">Payroll View</li>
+								<li class="breadcrumb-item active">My Payroll</li>
 							</ol>
 						</div>
 					</div>
@@ -55,7 +55,7 @@ and open the template in the editor.
 						<div class="col-12">
 							<div class="card">
 								<div class="card-header">
-									<h3 class="card-title">Payroll View</h3>
+									<h3 class="card-title">Payroll List</h3>
 									<div class="card-tools">
 										<div class="input-group input-group-sm" style="width: 150px;">
 											<input type="text" name="table_search" class="form-control float-right"
@@ -75,29 +75,19 @@ and open the template in the editor.
 											<tr>
 												<th>Payroll ID</th>
 												<th>Employee ID</th>
-												<th>Payroll Date</th>
-												<th>Hourly Rate</th>
-												<th>Annual Salary</th>
+												<th>Payroll Date</th>											
 											</tr>
 										</thead>
 										<tbody>
 											<tr th:each="payroll:${list}">
-												<td th:text="${payroll.payroll_id}"></td>
-												<td th:text="${payroll.employee_id}"></td>
-												<td th:text="${payroll.payroll_date}"></td>
-												<td th:text="${payroll.hourly_rate}"></td>
-												<td th:text="${payroll.annual_salary}"></td>
+												<td th:text="${payroll.payrollId}"></td>
+												<td th:text="${payroll.employeeId}"></td>
+												<td th:text="${payroll.payrollDate}"></td>
 												<td class="project-actions" style="display: flex;">
 												    <form style="padding-right: 0.25rem;">
-                                                        <button  class="btn btn-info btn-sm">
-                                                            <i class="fas fa-pencil-alt"></i>
-                                                            Edit
-                                                        </button>
-                                                    </form>
-                                                    <form>
-                                                        <button class="btn btn-danger btn-sm">
-                                                            <i class="fas fa-trash"></i>
-                                                            Delete
+                                                        <button  class="btn btn-primary btn-sm">
+                                                            <i class="fas fa-folder"></i>
+                                                            View
                                                         </button>
                                                     </form>
 												</td>
@@ -116,7 +106,7 @@ and open the template in the editor.
 			<!-- /.content -->
 		</div>
 		<!-- /.content-wrapper -->
-		<footer th:replace="/includes/base :: footer"></footer>
+		<footer th:replace="/includes/base-employee :: footer"></footer>
 	</div>
         <!-- ./wrapper -->
 
