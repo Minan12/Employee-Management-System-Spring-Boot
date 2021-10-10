@@ -24,12 +24,7 @@ SOFTWARE.
 
 **/
 
-
-/**
- * 
- */
 package com.bondominan.emsapp.controllers;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

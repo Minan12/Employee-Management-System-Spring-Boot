@@ -70,16 +70,5 @@ public class EmployeeDashboardController {
 	        model.addAttribute("payroll", payroll);
 			return "/employee-dashboard/invoice";
 	}
-		
-
-	/**
-	 * 
-	 * nothing
-	 */
 	
-	@GetMapping
-	("/employee-dashboard/invoice")
-	public String invoice() {
-		return "/employee-dashboard/invoice";
-	}
 }

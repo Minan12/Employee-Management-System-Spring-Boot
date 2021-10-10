@@ -24,7 +24,6 @@ SOFTWARE.
 
 **/
 
-
 package com.bondominan.emsapp.interfaces;
 
 import java.util.List;

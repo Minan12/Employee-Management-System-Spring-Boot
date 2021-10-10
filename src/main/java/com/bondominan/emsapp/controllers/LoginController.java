@@ -71,6 +71,7 @@ public class LoginController {
 			return "redirect:/login";
 		}	
 		sessionAuthEmail.setAttribute("employeeId", authEmail.getEmployeeId());
+		sessionAuthEmail.setAttribute("roleId", authEmail.getRoleId());
 		sessionAuthEmail.setAttribute("loggedIn", true);
 		
 

@@ -24,7 +24,6 @@ SOFTWARE.
 
 **/
 
-
 package com.bondominan.emsapp;
 
 import java.io.IOException;
@@ -72,7 +71,7 @@ public class AuthMiddleware implements Filter {
         Pattern pattern = Pattern.compile("(png|jpg|images|svg|css|js|ico|woff2|woff|ttf)");
         Matcher matcher = pattern.matcher(req.getRequestURI());
         boolean matchFound = matcher.find();
-
+        
         if (!matchFound) {
             if (!contains && (session.getAttribute("loggedIn") == null)) {
                 System.out.println("User should be logged in!");
@@ -88,5 +87,7 @@ public class AuthMiddleware implements Filter {
         }
 
         System.out.println("Finishing request from: " + req.getRequestURI());
+        
+   
     }
 }

@@ -45,6 +45,7 @@ public class LogoutController {
         HttpSession session = request.getSession(true);
 
         session.removeAttribute("employeeId");
+        session.removeAttribute("roleId");
         session.invalidate();
         
         return "redirect:/login";
