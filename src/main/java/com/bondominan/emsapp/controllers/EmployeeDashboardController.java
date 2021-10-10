@@ -33,6 +33,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.bondominan.emsapp.interfaces.PayrollInterface;
@@ -62,21 +63,17 @@ public class EmployeeDashboardController {
 	}
 	
 	@GetMapping
-	("/employee-dashboard/my-payroll")
-	public String myPayrollView() {
-		return "/employee-dashboard/my-payroll";
+	("/admin-dashboard/edit-payroll/{payrollId}")
+	public String adminDashboardEditPayroll(@PathVariable(value = "payrollId") long payrollId, Model model) {
+		Payroll payroll = payrollInterface.getDataById(payrollId);
+
+        model.addAttribute("payroll", payroll);
+		return "/admin-dashboard/edit-payroll";
 	}
 	
-	@PostMapping
+	@GetMapping
 	("/employee-dashboard/my-payroll")
-	public String getMyPayroll(HttpServletRequest request, Model model) {
-		HttpSession session = request.getSession(true);
-		String stringEmployeeId = (String) session.getAttribute("employeeId");
-		long employeeId = Integer.parseInt(stringEmployeeId);
-		
-		Payroll payroll = payrollInterface.getDataById(employeeId);
-        model.addAttribute("payroll", payroll);
-        
+	public String myPayrollView() {
 		return "/employee-dashboard/my-payroll";
 	}
 	
