@@ -27,8 +27,8 @@ This project uses a number of open source projects to work properly:
 - Start the server
 
 ## License
-[MIT License](https://choosealicense.com/licenses/mit/)
-[AdminLTE License](https://adminlte.io/docs/2.4/license)
+- [MIT License](https://choosealicense.com/licenses/mit/)
+- [AdminLTE License](https://adminlte.io/docs/2.4/license)
 
 ## Authors
 - [Bondo Pangaji](https://github.com/bondopangaji)
