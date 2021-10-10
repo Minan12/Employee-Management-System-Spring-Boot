@@ -30,7 +30,7 @@ This project uses a number of open source projects to work properly:
 **Login**
 ![Preview0](https://github.com/bondopangaji/Employee-Management-System-Spring-Boot/blob/master/preview/preview0.png?raw=true)
 
-**Employee List*
+**Employee List**
 ![Preview1](https://github.com/bondopangaji/Employee-Management-System-Spring-Boot/blob/master/preview/preview1.png?raw=true)
 
 **Payroll List**
