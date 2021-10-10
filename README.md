@@ -27,18 +27,24 @@ This project uses a number of open source projects to work properly:
 - Start the server
 
 ## Preview
+**Login**
 ![Preview0](https://github.com/bondopangaji/Employee-Management-System-Spring-Boot/blob/master/preview/preview0.png?raw=true)
-Login
+
+**Employee List*
 ![Preview1](https://github.com/bondopangaji/Employee-Management-System-Spring-Boot/blob/master/preview/preview1.png?raw=true)
-Employee list
+
+**Payroll List**
 ![Preview2](https://github.com/bondopangaji/Employee-Management-System-Spring-Boot/blob/master/preview/preview2.png?raw=true)
-Payroll list
+
+**My Payroll**
 ![Preview3](https://github.com/bondopangaji/Employee-Management-System-Spring-Boot/blob/master/preview/preview3.png?raw=true)
-My payroll
+
+**Payroll Invoice**
 ![Preview4](https://github.com/bondopangaji/Employee-Management-System-Spring-Boot/blob/master/preview/preview4.png?raw=true)
-Payroll invoice
+
+**Payroll Invoice Print**
 ![Preview5](https://github.com/bondopangaji/Employee-Management-System-Spring-Boot/blob/master/preview/preview5.png?raw=true)
-Payroll invoice print
+
 ## License
 - [MIT License](https://choosealicense.com/licenses/mit/)
 - [AdminLTE License](https://adminlte.io/docs/2.4/license)
