@@ -138,6 +138,15 @@ public class AdminDashboardController {
         return "redirect:/admin-dashboard/payroll-list";
     }
     
+	@GetMapping
+	("/admin-dashboard/edit-payroll/{payrollId}")
+	public String adminDashboardEditPayroll(@PathVariable(value = "payrollId") long payrollId, Model model) {
+		Payroll payroll = payrollInterface.getDataById(payrollId);
+
+        model.addAttribute("payroll", payroll);
+		return "/admin-dashboard/edit-payroll";
+	}
+    
     @PostMapping
     ("/admin-dashboard/payroll-list/edit-payroll/edited")
     public String storeEditPayroll(@ModelAttribute("payroll") Payroll payroll) throws Exception{       
