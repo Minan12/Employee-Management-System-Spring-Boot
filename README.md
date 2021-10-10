@@ -1,4 +1,4 @@
-# Employee-Management-System-Spring-Boot
+# EMS Spring Boot
 
 ## Overview
 The purpose of this web application is to complete Spring Boot Projecr "Enterprise Application" assigned by Faculty Muhamad Hudya Ramadhana in the third semester. Professional Program in Information Technology (Software Engineering), CCIT - Fakultas Teknik Universitas Indonesia.
