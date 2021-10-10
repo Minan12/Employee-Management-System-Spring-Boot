@@ -26,6 +26,14 @@ This project uses a number of open source projects to work properly:
 - Import SQL schema
 - Start the server
 
+## User Credentials
+#### Admin
+- Email: dummyadm@bondo.com
+- Password: password
+#### Employee
+- Email: dummyemp@bondo.com
+- Password: password
+
 ## Preview
 **Login**
 ![Preview0](https://github.com/bondopangaji/Employee-Management-System-Spring-Boot/blob/master/preview/preview0.png?raw=true)
